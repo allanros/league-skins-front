@@ -6,6 +6,27 @@ export const MainContainer = styled.div`
     gap: 2rem;
 `
 
+export const MainScrollContainer = styled.div`
+    overflow-y: auto;
+    height: 85vh;
+    padding-right: 1rem;
+
+    &::-webkit-scrollbar {
+        width: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #888;
+        border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: ${props => props.theme["gray-900"]};
+        border: 2px solid ${props => props.theme["gray-300"]};
+        border-radius: 8px;
+    }
+`
+
 export const ChampionContainer = styled.div`
     display: flex;
     flex-direction: column;
