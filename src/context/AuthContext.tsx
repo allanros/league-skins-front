@@ -1,4 +1,5 @@
 import { createContext, useState, ReactNode, useEffect } from 'react'
+import { getUserId } from '../services/authService'
 
 interface AuthContextProps {
     isAuthenticated: boolean;
@@ -13,6 +14,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
+        const userId = getUserId()
+        if (!token || !userId) {
+            setIsAuthenticated(false);
+            return
+        }
         setIsAuthenticated(!!token);
     }, []);
 

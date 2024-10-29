@@ -2,6 +2,7 @@ import { ChampionContainer, MainContainer, MainScrollContainer, SkinCard, SkinCo
 import { useCallback, useEffect, useRef, useState } from "react"
 import { debounce } from "lodash"
 import { getChampions } from "../../services/championService"
+import { AddSkin } from "./components/AddSkin"
 
 interface Champion {
   champion: string
@@ -151,6 +152,7 @@ export function SkinsPage() {
                 skin.name.toLowerCase() !== "default" && (
                   <SkinCard key={skin.skin_id}>
                     <img src={skin.image} alt={skin.name} />
+                    <AddSkin skin={skin.skin_id} />
                     <span>{skin.name}</span>
                   </SkinCard>
                 )

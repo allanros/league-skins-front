@@ -19,12 +19,14 @@ export const HeaderContainer = styled.header`
 
   a {
     text-decoration: none;
+    height: 100%;
   }
 `
 const Headerdiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   padding: 1rem;
   gap: 0.5rem;
 
@@ -59,7 +61,8 @@ export const UserLoginButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 13px;
 
-  margin-right: 2rem;
+  margin: 0 2rem;
+  min-width: 10rem;
   border: none;
 
   cursor: pointer;
@@ -69,5 +72,34 @@ export const UserLoginButton = styled.button`
   &:hover {
     background-color: ${props => props.theme['gray-800']};
     color: ${props => props.theme.white};
+  }
+`
+
+export const HeaderMenu = styled.nav`
+  display: flex;
+  gap: 0.2rem;
+  height: 100%;
+  align-items: center;
+
+  a {
+    color: ${props => props.theme['gray-100']};
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: capitalize;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80%;
+    padding: 0.5rem;
+
+    border-left: 2px solid white;
+    border-right: 2px solid white;
+
+    transition: color 0.2s;
+
+    &:hover {
+      color: ${props => props.theme['gray-800']};
+    }
   }
 `

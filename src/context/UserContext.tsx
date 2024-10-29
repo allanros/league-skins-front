@@ -3,9 +3,10 @@ import { getUserId } from "../services/authService"
 import { getUserInfo } from "../services/userService"
 
 interface User {
-    id: string;
-    name: string;
-    email: string;
+    id: string
+    name: string
+    email: string
+    skins: Array<string> | undefined
 }
 
 interface UserContextProps {
@@ -29,7 +30,8 @@ export function UserProvider({ children }: { children: ReactNode }) {
                             setUserInfo({
                                 id: userId,
                                 name: userInfo.username,
-                                email: userInfo.email
+                                email: userInfo.email,
+                                skins: userInfo.skins
                             })
                         }
                     })

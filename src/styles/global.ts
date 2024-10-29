@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components"
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -10,6 +10,6 @@ export const GlobalStyle = createGlobalStyle`
   body {
     font-family: Arial, sans-serif;
     background: ${props => props.theme['gray-800']};
-    color: ${props => props.theme.white}
+    color: ${props => props.theme.white};
   }
-`;
+`

@@ -29,7 +29,8 @@ export function Login() {
             setUser({
                 id: userId,
                 name: user?.username || '',
-                email: user?.email || ''
+                email: user?.email || '',
+                skins: user?.skins || []
             })
 
             navigate('/dashboard')

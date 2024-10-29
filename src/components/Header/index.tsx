@@ -1,4 +1,4 @@
-import { HeaderContainer, HeaderLogo, HeaderUser, UserLoginButton } from "./styles"
+import { HeaderContainer, HeaderLogo, HeaderMenu, HeaderUser, UserLoginButton } from "./styles"
 import { useAuth } from "../../context/useAuth"
 import { NavLink, useNavigate } from "react-router-dom"
 
@@ -24,6 +24,11 @@ export function Header() {
                     <span>League skins</span>
                 </HeaderLogo>
             </NavLink>
+            <HeaderMenu>
+                <NavLink to="/dashboard">Dashboard</NavLink>
+                <NavLink to="/skins">Adicionar skin</NavLink>
+            </HeaderMenu>
+
             {isAuthenticated && user ? (
                 <NavLink to="/dashboard">
                     <HeaderUser>
