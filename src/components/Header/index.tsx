@@ -25,8 +25,12 @@ export function Header() {
                 </HeaderLogo>
             </NavLink>
             <HeaderMenu>
-                <NavLink to="/dashboard">Dashboard</NavLink>
-                <NavLink to="/skins">Adicionar skin</NavLink>
+                <div>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
+                </div>
+                <div>
+                    <NavLink to="/skins">Adicionar skin</NavLink>
+                </div>
             </HeaderMenu>
 
             {isAuthenticated && user ? (

@@ -86,6 +86,7 @@ export const HeaderMenu = styled.nav`
     font-size: 1rem;
     font-weight: bold;
     text-transform: capitalize;
+    position: relative;
 
     display: flex;
     align-items: center;
@@ -93,13 +94,21 @@ export const HeaderMenu = styled.nav`
     height: 80%;
     padding: 0.5rem;
 
-    border-left: 2px solid white;
-    border-right: 2px solid white;
-
     transition: color 0.2s;
 
-    &:hover {
-      color: ${props => props.theme['gray-800']};
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background-color: ${(props) => props.theme["gray-100"]};
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
     }
   }
 `

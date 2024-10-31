@@ -3,6 +3,8 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import { debounce } from "lodash"
 import { getChampions } from "../../services/championService"
 import { AddSkin } from "./components/AddSkin"
+import { useAuth } from "../../context/useAuth"
+import { NavLink } from "react-router-dom"
 
 interface Champion {
   champion: string
@@ -23,6 +25,8 @@ export function SkinsPage() {
   const [startX, setStartX] = useState(0)
   const [scrollLeft, setScrollLeft] = useState(0)
   const [activateContainerIndex, setActivateContainerIndex] = useState<number | undefined>(undefined)
+
+  const { isAuthenticated } = useAuth()
 
   const [champions, setChampions] = useState<Champion[]>([])
   const [page, setPage] = useState(0)
@@ -127,41 +131,47 @@ export function SkinsPage() {
 
   return (
     <MainContainer>
-      <h1>Skins Page</h1>
-      <MainScrollContainer
-        ref={mainContainerRef} onScroll={handleScroll}
-      >
-        {champions.map((champion, index) => (
-          <ChampionContainer key={champion.niceName}>
-            <h2>{champion.champion}</h2>
-            <SkinContainer
-              ref={el => {
-                if (containerRef.current) {
-                  containerRef.current[index] = el;
-                }
-              }}
-              onMouseDown={(e) => handleMouseDown(index, e)}
-              onMouseMove={handleMouseMove}
-              onMouseUp={handleMouseUpOrLeave}
-              onMouseLeave={handleMouseUpOrLeave}
-              style={{ 
-                cursor: isDragging && activateContainerIndex === index ? "grabbing" : "grab",
-              }}
-            >
-              {champion.skins.map((skin: ChampionSkins) => (
-                skin.name.toLowerCase() !== "default" && (
-                  <SkinCard key={skin.skin_id}>
-                    <img src={skin.image} alt={skin.name} />
-                    <AddSkin skin={skin.skin_id} />
-                    <span>{skin.name}</span>
-                  </SkinCard>
-                )
-              ))}
-            </SkinContainer>
-          </ChampionContainer>
-        ))}
-      </MainScrollContainer>
-      {loading && <p>Loading...</p>}
+      {isAuthenticated ? (
+        <>
+          <h1>Adicione as skins</h1>
+          <MainScrollContainer
+            ref={mainContainerRef} onScroll={handleScroll}
+          >
+            {champions.map((champion, index) => (
+              <ChampionContainer key={champion.niceName}>
+                <h2>{champion.champion}</h2>
+                <SkinContainer
+                  ref={el => {
+                    if (containerRef.current) {
+                      containerRef.current[index] = el;
+                    }
+                  }}
+                  onMouseDown={(e) => handleMouseDown(index, e)}
+                  onMouseMove={handleMouseMove}
+                  onMouseUp={handleMouseUpOrLeave}
+                  onMouseLeave={handleMouseUpOrLeave}
+                  style={{ 
+                    cursor: isDragging && activateContainerIndex === index ? "grabbing" : "grab",
+                  }}
+                >
+                  {champion.skins.map((skin: ChampionSkins) => (
+                    skin.name.toLowerCase() !== "default" && (
+                      <SkinCard key={skin.skin_id}>
+                        <img src={skin.image} alt={skin.name} />
+                        <AddSkin skin={skin.skin_id} />
+                        <span>{skin.name}</span>
+                      </SkinCard>
+                    )
+                  ))}
+                </SkinContainer>
+              </ChampionContainer>
+            ))}
+          </MainScrollContainer>
+          {loading && <p>Loading...</p>}
+        </>
+      ) : (
+        <h1>Para adicionar skins é necessário o <NavLink to={"/login"}>Login</NavLink></h1>
+      )}
     </MainContainer>
   )
 }

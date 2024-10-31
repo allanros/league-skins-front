@@ -7,7 +7,6 @@ export const MainContainer = styled.div`
     margin: auto;
     padding: 2.5rem;
     width: 30rem;
-    height: 25rem;
 
     border-radius: 13px;
 
@@ -22,7 +21,6 @@ export const RegisterFormContainer = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     justify-content: space-around;
     gap: 1rem;
     width: 100%;
@@ -54,6 +52,7 @@ export const RegisterFormContainer = styled.form`
         width: 40%;
         font-size: 1rem;
         font-weight: bold;
+        margin-top: 2rem;
 
         padding: 0.5rem 1rem;
         border-radius: 13px;

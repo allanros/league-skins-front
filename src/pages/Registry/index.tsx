@@ -8,7 +8,8 @@ import { useAuth } from "../../context/useAuth"
 interface RegisterFormInputs {
     email: string,
     username: string,
-    password: string
+    password: string,
+    passwordConfirmation: string
 }
 
 export function Registry() {
@@ -18,6 +19,12 @@ export function Registry() {
     const { isAuthenticated } = useAuth()
 
     const onSubmit = async (data: RegisterFormInputs) => {
+
+        if (data.password !== data.passwordConfirmation) {
+            setErrorMessage('Senhas não conferem')
+            return
+        }
+        
         const success = await registerUser(data.email, data.username, data.password)
 
         if (success) {
@@ -49,6 +56,12 @@ export function Registry() {
                             type="password"
                             placeholder="Senha"
                             {...register('password', { required: 'Campo obrigatório' })}
+                        />
+                        {errors.passwordConfirmation && <span>{errors.passwordConfirmation.message}</span>}
+                        <input 
+                            type="password"
+                            placeholder="Confirme sua senha"
+                            {...register('passwordConfirmation', { required: 'Campo obrigatório' })}
                         />
                     </div>
                     {errorMessage && <span>{errorMessage}</span>}

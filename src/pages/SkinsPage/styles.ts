@@ -4,6 +4,13 @@ export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    h1 {
+        a {
+            color: ${props => props.theme["green-500"]};
+            text-decoration: none
+        }
+    }
 `
 
 export const MainScrollContainer = styled.div`
