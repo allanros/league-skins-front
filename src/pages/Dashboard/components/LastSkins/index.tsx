@@ -1,6 +1,5 @@
 import { LastSkinsContainer, SkinCard, SkinsContainer } from "./styles";
 
-// import skinTestImg from "../../../../assets/Aatrox_0.jpg"
 import { useUserInfo } from "../../../../context/useUserInfo";
 
 export function LastSkins() {
