@@ -8,4 +8,8 @@ export const LayoutContainer = styled.div`
 export const BodyLayout = styled.div`
   margin: 6rem 10rem;
   min-height: calc(100vh - 22.375rem);
+
+  @media (max-width: 768px) {
+    margin: 6rem 2rem;
+  }
 `

@@ -5,8 +5,6 @@ export const GraphicContainer = styled.div`
     flex-direction: column;
     justify-content: center;
 
-    flex: 1;
-
     margin-bottom: 3rem;
 `
 
@@ -24,6 +22,7 @@ export const GraphicContent = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    height: 25rem;
 
     text-align: center;
 
@@ -31,24 +30,26 @@ export const GraphicContent = styled.div`
         margin-bottom: 1rem;
     }
 
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
 `
 
-const GraphicStyle = styled.div`
-    div {
-        border: 1px solid ${props => props.theme.white};
-        border-radius: 100%;
-        padding: 1rem;
-        margin-bottom: 1rem;
-        
-        width: 15rem;
-        height: 15rem;
+const Graphic = styled.div`
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    @media (max-width: 768px) {
+        width: 100%;
     }
 `
 
-export const GraphicTotal = styled(GraphicStyle)``
+export const GraphicTotal = styled(Graphic)``
 
-export const GraphicPerChampion = styled(GraphicStyle)``
+export const GraphicPerChampion = styled(Graphic)``
