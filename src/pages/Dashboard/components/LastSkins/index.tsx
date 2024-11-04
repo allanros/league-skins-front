@@ -1,27 +1,28 @@
 import { LastSkinsContainer, SkinCard, SkinsContainer } from "./styles";
 
-import skinTestImg from "../../../../assets/Aatrox_0.jpg"
+// import skinTestImg from "../../../../assets/Aatrox_0.jpg"
+import { useUserInfo } from "../../../../context/useUserInfo";
 
 export function LastSkins() {
+    const { user } = useUserInfo()
+    const skins = user?.skins || []
+    const lastSkins = skins.slice(-5)
+
+    console.log(lastSkins)
+
     return (
         <LastSkinsContainer>
             <h1>Últimas skins</h1>
             <SkinsContainer>
-                <SkinCard>
-                    <img src={skinTestImg} alt="" />
-                </SkinCard>
-                <SkinCard>
-                    <img src={skinTestImg} alt="" />
-                </SkinCard>
-                <SkinCard>
-                    <img src={skinTestImg} alt="" />
-                </SkinCard>
-                <SkinCard>
-                    <img src={skinTestImg} alt="" />
-                </SkinCard>
-                <SkinCard>
-                    <img src={skinTestImg} alt="" />
-                </SkinCard>
+                {
+                    lastSkins.map((skin) => {
+                        return (
+                            <SkinCard key={skin}>
+                                <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${skin}.jpg`} alt="" />
+                            </SkinCard>
+                        )
+                    })
+                }
             </SkinsContainer>
         </LastSkinsContainer>
     )
